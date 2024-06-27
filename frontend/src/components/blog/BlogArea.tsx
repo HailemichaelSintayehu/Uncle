@@ -1,6 +1,7 @@
 import React from "react";
 import BlogLeftContent from "./BlogLeftContent";
 import BlogRightContent from "./BlogRightContent";
+import CreateBlog from "./CreateBlog";
 
 const BlogArea = () => {
   
@@ -11,6 +12,7 @@ const BlogArea = () => {
           <div className="row">
             <BlogLeftContent/>
             <BlogRightContent />
+            <CreateBlog />
           </div>
         </div>
       </div>

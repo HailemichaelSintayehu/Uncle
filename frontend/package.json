@@ -37,6 +37,9 @@
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.63.4",
+    "slate": "^0.103.0",
+    "slate-history": "^0.100.0",
+    "slate-react": "^0.105.0",
     "sonner": "^1.4.3",
     "swiper": "^9.4.1",
     "wowjs": "^1.1.3"

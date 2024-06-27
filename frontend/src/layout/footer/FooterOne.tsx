@@ -170,7 +170,7 @@ const FooterOne = () => {
                 <Link href="/privecy-policy" className="text-btn">
                   Privacy Policy
                 </Link> */}
-                <Link href="/privacy-policy" className="text-btn">
+                <Link href="/privecy-policy" className="text-btn">
                   Terms & Conditions
                 </Link>
                 {/* <Link href="/privecy-policy" className="text-btn">

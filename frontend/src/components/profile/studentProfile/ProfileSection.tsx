@@ -14,6 +14,7 @@ import PaymentInfo from "./PaymentInfo";
 import CancelOrderTrack from "./CancelOrderTrack";
 import { useAppSelector } from "@/redux/hooks";
 import ShipmentTracking from "./ShipmentTracking";
+import SmileVerification from "./smileVerification";
 
 const ProfileSection = () => {
   const user = useAppSelector(state => state.auth.user)
@@ -89,6 +90,15 @@ const ProfileSection = () => {
                 >
                   <h4 className="mb-25">My Profile</h4>
                   <MyProfile />
+                </div>
+                <div
+                  className="tab-pane fade"
+                  id="smile"
+                  role="tabpanel"
+                  aria-labelledby="smile-tab"
+                >
+                  <h4 className="mb-25">Smile Verification</h4>
+                  <SmileVerification />
                 </div>
 
                 <div

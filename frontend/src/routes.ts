@@ -12,7 +12,7 @@ export enum Routes {
     HOME = '/',
     ABOUT = '/about',
     HOWITWORKS = '/how-it-works',
-    // BLOG = '/blogs',
+    BLOG = '/blogs',
     CART = '/cart',
     CHECKOUT = '/checkout',
     CONTACT = '/contact',

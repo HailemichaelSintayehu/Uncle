@@ -1,6 +1,7 @@
 const express = require("express");
 
 const user_controllers = require("../controllers/user_controller");
+const smile_controllers = require("../controllers/smile_controller");
 const { require_auth } = require("../middleware/auth");
 
 const router = express.Router();
@@ -21,6 +22,7 @@ router.put("/api/changePasswordVerification", user_controllers.changePasswordVer
 router.put("/api/checkVerfiedCode", user_controllers.checkVerfiedCode);
 router.put("/api/sendVerificationCode", user_controllers.sendVerificationCode);
 router.get("/api/getUserByEmail/:email", user_controllers.getUserByEmail);
+router.post("/api/smile", smile_controllers.start);
 
 //update user profile route
 router.put("/api/update-profile", user_controllers.update_user_profile);
@@ -29,6 +31,7 @@ router.put("/api/update-profile", user_controllers.update_user_profile);
 router
   .route("/api/subscriptions")
   .get(require_auth, user_controllers.get_user_subscriptions);
+
 router
   .route("/api/orders")
   .get(require_auth, user_controllers.get_all_orders);

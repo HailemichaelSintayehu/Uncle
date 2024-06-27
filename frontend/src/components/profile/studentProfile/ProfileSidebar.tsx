@@ -50,6 +50,20 @@ console.log(user,"()")
           <li className="nav-item" role="presentation">
             <button
               className="nav-link"
+              id="smile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#smile"
+              type="button"
+              role="tab"
+              aria-controls="smile"
+              aria-selected="false"
+            >
+              <i className="fa fa-check" aria-hidden="true"></i>Verification
+            </button>
+          </li>
+          <li className="nav-item" role="presentation">
+            <button
+              className="nav-link"
               id="history-tab"
               data-bs-toggle="tab"
               data-bs-target="#history"

@@ -72,18 +72,18 @@ const menu_data: MenuType[] = [
     title: "How it Works",
     link: Routes.HOWITWORKS,
   },
-  // {
-  //   id: 3,
-  //   hasDropdown: false,
-  //   active: true,
-  //   title: "Blogs",
-  //   pluseIncon: true,
-  //   link: Routes.BLOG,
-  //   // submenus: [
-  //   //   { title: "Blog", link: "/blog" },
-  //   //   { title: "Blog Details", link: "/blog-details" },
-  //   // ],
-  // },
+  {
+    id: 3,
+    hasDropdown: false,
+    active: true,
+    title: "Blogs",
+    pluseIncon: true,
+    link: Routes.BLOG,
+    // submenus: [
+    //   { title: "Blog", link: "/blog" },
+    //   { title: "Blog Details", link: "/blog-details" },
+    // ],
+  },
   {
     id: 4,
     hasDropdown: true,

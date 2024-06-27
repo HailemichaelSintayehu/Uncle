@@ -6,11 +6,10 @@ import './globals.css';
 import AppProvider from '@/contextApi/AppProvider';
 import ReduxProvider from '@/redux/provider';
 import { Toaster } from "sonner";
-import Script from "next/script";
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode 
 }) {
   return (
     <>
@@ -25,18 +24,6 @@ export default function RootLayout({
           />
           <link rel="icon" href="/favicon.ico" />
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
-          <Script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-GGMD7PRKME"
-          ></Script>
-          <Script id="google-analytics">
-            {`
-            window.dataLayer = window.dataLayer || []; 
-            function gtag(){dataLayer.push(arguments);} 
-            gtag('js', new Date()); 
-            gtag('config', 'G-GGMD7PRKME');
-          `}
-          </Script>
         </head>
 
         <body suppressHydrationWarning={true}>
@@ -44,10 +31,10 @@ export default function RootLayout({
             <AppProvider>
               {children}
             </AppProvider>
-            <Toaster position="top-center" richColors />
+             <Toaster position="top-center" richColors/>
           </ReduxProvider>
         </body>
-      </html >
+      </html>
     </>
   )
 }

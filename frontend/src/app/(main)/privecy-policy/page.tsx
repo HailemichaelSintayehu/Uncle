@@ -6,7 +6,7 @@ import React from "react";
 const PrivecyPolicyPage = () => {
   return (
     <>
-      <MetaData pageTitle="Privacy Policy">
+      <MetaData pageTitle="Privecy Policy">
         <main>
           <PrivacyPolicyMain />
         </main>

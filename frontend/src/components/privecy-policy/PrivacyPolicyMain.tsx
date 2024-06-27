@@ -5,7 +5,7 @@ import BreadCrumb from "../SharedComponents/BreadCrumb";
 const PrivacyPolicyMain = () => {
   return (
     <>
-      <BreadCrumb title="Privacy Policy" />
+      <BreadCrumb title="Privecy Policy" />
       <section className="terms_conditions_section section_space_lg pt-120">
         <div className="container container-small">
           <div className="row">
@@ -159,8 +159,8 @@ const PrivacyPolicyMain = () => {
                           We will endeavor to deliver goods within the times stated but goods are subject to availability and any delay in the delivery of goods is sometimes out of our control.
                           Stated delivery times are approximate; we will contact you with confirmed delivery date after purchase at a time that is suitable for you.
                           If you have any queries regarding delivery prior to purchase, we can offer you more precise information by speaking to one of our Sales Team on 0702062075 or alternatively emailing us at {" "}
-                          <Link className="link" href="support@uncle.ke">
-                            support@uncle.ke
+                          <Link className="link" href="hawadologroup@gmail.com">
+                            hawadologroup@gmail.com
                           </Link>.
                         </span>
                       </li>
@@ -484,8 +484,8 @@ const PrivacyPolicyMain = () => {
                     <li>
                       <span className="list_item_text">
                         All requests for refunds can be made via email to
-                        <Link className="link" href="support@uncle.ke">
-                          support@uncle.ke
+                        <Link className="link" href="hawadologroup@gmail.com">
+                          hawadologroup@gmail.com
                         </Link>.
                       </span>
                     </li>
@@ -574,7 +574,7 @@ const PrivacyPolicyMain = () => {
                     </h4>
                     <li>
                       <span className="list_item_text">
-                        <strong>Reporting Concerns: </strong>Hawa Dolo Limited takes concerns of misconduct seriously. To report suspected abuse, fraud, or issues with our employees/agents, email support@uncle.ke. Anonymous reports are accepted, but providing contact details may aid investigations. Good faith reporting is protected, but intentionally false reports may result in legal action. Reporter identities remain confidential as permitted by law.
+                        <strong>Reporting Concerns: </strong>Hawa Dolo Limited takes concerns of misconduct seriously. To report suspected abuse, fraud, or issues with our employees/agents, email hawadologroup@gmail.com. Anonymous reports are accepted, but providing contact details may aid investigations. Good faith reporting is protected, but intentionally false reports may result in legal action. Reporter identities remain confidential as permitted by law.
                       </span>
                     </li>
                     <li>

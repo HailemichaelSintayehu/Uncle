@@ -12,6 +12,18 @@ interface propsType {
 }
 
 const BlogDetailsLeft = ({ item }: propsType) => {
+  function formatDate(timestampStr:string):string {
+    const timestamp = new Date(timestampStr);
+    const options = {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    };
+  
+    const formattedDate = timestamp.toLocaleDateString("en-US", options as any);
+  
+    return formattedDate;
+  }
   return (
     <>
       <div className="col-xl-8 col-lg-12">
@@ -20,7 +32,7 @@ const BlogDetailsLeft = ({ item }: propsType) => {
             <div className="col-xl-12 col-lg-12 col-md-12">
               <div className="blog-wrapper position-relative blog-details-wrapper mb-30">
                 <div className="blog-thumb ">
-                  <Image
+                  <img
                     style={{ width: "100%", height: "auto" }}
                     src={item?.blogImg}
                     alt="blog-img"
@@ -30,7 +42,7 @@ const BlogDetailsLeft = ({ item }: propsType) => {
                   <div className="blog-meta">
                     <div className="blog-date">
                       <i className="flaticon-calendar"></i>
-                      <span> {item?.date} </span>
+                      <span>{formatDate(item?.createdAt as any)} </span>
                     </div>
                     <div className="blog-user">
                       <i className="flaticon-avatar"></i>
@@ -39,21 +51,9 @@ const BlogDetailsLeft = ({ item }: propsType) => {
                   </div>
                   <div className="blog-content">
                     <p>
-                      When it comes to designing better links and sending better
-                      emails, Slava Shestopalov has a few tips on how to improve
-                      your website’s experience while accessibility in mind.
-                      There are so many websites out there that have not
-                      considered the overall usability of their visually
-                      impaired users. The participants will get general ideas of
-                      the land management system of business. Everyone must
-                      work, but for many of us that job isn’t just a paycheck,
-                      it’s an opportunity to express ourselves and make
-                      something better. Entrepreneurs and go-getters often feel
-                      as if they carry the weight of an entire organization on
-                      their backs, and therefore could always use a little extra
-                      motivation.
+                     {item?.description as any}
                     </p>
-                    <blockquote>
+                    {/* <blockquote>
                       <p>
                         Tosser argy-bargy mush loo at public school Elizabeth up
                         the duff buggered chinwag on your bike mate don’t get
@@ -243,7 +243,9 @@ const BlogDetailsLeft = ({ item }: propsType) => {
                 <div className="blog__comment">
                   <h3>Leave a Comment</h3>
                     <BlogCommentForm/>
-                </div>
+                </div> */}
+              </div>
+              </div>
               </div>
             </div>
           </div>

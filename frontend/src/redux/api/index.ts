@@ -218,6 +218,12 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
       getOrder: builder.query<any, void>({
         query: () => 'orders',
       }),
+      getBlogs: builder.query<any, void>({
+        query: () => 'getBlogs',
+      }),
+      showBlogs: builder.query<any, void>({
+        query: (id) => `showBlogs/${id}`,
+      }),
       getUserByEmail: builder.query<any, string>({
         query:(email) => `getUserByEmail/${email}`
       }),
@@ -226,6 +232,26 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
             url: 'createContactUs',
             method: 'POST',
             body: data,
+        })
+    }),
+     createBlogPost : builder.mutation<void, {title: string, blogImg: string, category: string, description: string}>({
+        query: (data) => ({
+            url: 'createBlog',
+            method: 'POST',
+            body: data,
+        })
+    }),
+     UpdateBlogPost: builder.mutation<void, {id:string,title: string, blogImg: string, category: string, description: string}>({
+        query: (data) => ({
+            url: `updateBlog`,
+            method: 'POST',
+            body: data,
+        })
+    }),
+     DeleteBlogPost: builder.mutation<void, {id:string}>({
+        query: (id) => ({
+            url: `deleteBlog/${id}`,
+            method: 'DELETE',
         })
     }),
       forgetPassword: builder.mutation<void, {email: string}>({
@@ -270,6 +296,13 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
             body:data,
         })
     }),
+      checkVerfication: builder.mutation<void, {user_id: string,user_image:string,user_image_id:string}>({
+        query: (data) => ({
+            url: 'smile',
+            method: 'POST',
+            body:data,
+        })
+    }),
     }),
   });
   
@@ -285,6 +318,13 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
     useCancelSubscriptionMutation,
     // contact api
     useCreateContactUsMutation,
+    //blog
+    useCreateBlogPostMutation,
+    useGetBlogsQuery,
+    useShowBlogsQuery,
+    useUpdateBlogPostMutation,
+    useDeleteBlogPostMutation,
+    //
     useForgetPasswordMutation,
     useEmailSubscriptionMutation,
     //contact api
@@ -292,6 +332,7 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
     useChangePasswordMutation,
     useChangePasswordVerfiedPasswordMutation,
     useCheckVerfiedCodeMutation,
+    useCheckVerficationMutation,
     useSendVerificationCodeMutation,
     //change password api
     //get user by email
