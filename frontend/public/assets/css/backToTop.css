@@ -1,0 +1,97 @@
+.progress-wrap {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50px;
+    box-shadow: inset  0 0 0 2px rgba(95, 58, 252,0.2);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  
+  .progress-wrap.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .progress-wrap::after {
+    position: absolute;
+    content: '\f176';
+    font-family: "Font Awesome 5 Pro";
+    text-align: center;
+    line-height: 46px;
+    font-size: 20px;
+    color: #2c3941;
+    left: 0;
+    top: 0;
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+    display: block;
+    z-index: 1;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+
+
+  
+  .progress-wrap svg path { 
+    fill: none; 
+  }
+  
+  .progress-wrap svg.progress-circle path {
+    stroke: #2c3941;
+    stroke-width: 4;
+    box-sizing:border-box;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .float-icon {
+    position: fixed;
+    bottom: 101px;
+    right: 48px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+  }
+  .main-icon {
+    cursor: pointer;
+    background: transparent;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    .sub-icons {
+      position: absolute;
+      bottom: 63px;
+      right: -45px;
+      width: 180px;
+      background-color: #fff;
+      color: #000;
+      box-shadow: 0px 8px 8px 1px rgba(0, 0, 0, 0.75);
+      padding: 6px 8px;
+
+  }
+  
+  .support-text-icon-rapper{
+    display: flex;
+    gap: 10px;  
+    cursor: pointer;
+  }
+  .support-text-icon-rapper:hover{
+    background-color: gainsboro;
+    padding: 0px 3px;
+  }

@@ -1,0 +1,130 @@
+// src/components/RentingAdvantages.scss
+
+
+  // src/components/RentingAdvantages.scss
+  .highlight-red {
+    background-color: #ffb4ab;
+    color: #690005;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 34px;
+  }
+
+  .highlight-green {
+    background-color: #9fd67c;
+    color: #143800;
+    text-align: center;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 34px;
+  }
+  .renting-advantages {
+    text-align: center;
+    background-color: #fff; // Adjust the background color if needed
+    padding: 40px 0px;
+    h1 {
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      max-width: 800px;
+
+      thead {
+        tr {
+          background-color: #fff;
+
+          th {
+          
+            font-size: 1em;
+            font-weight: bold;
+            text-align: center;
+          }
+        }
+      }
+
+      tbody {
+          border-color: inherit;
+      border-style: solid;
+      border-width: 0px;
+        tr {
+          height: 60px;
+          background-color: #ffff0033 ;
+          border: 10px solid white;
+          border-radius: 25px;
+          td {
+            padding: 5px;
+            font-size: 12px;
+            text-align: left;
+            margin: 20px;
+            color:black
+          }
+        }
+      }
+    }
+  }
+// src/components/PerfectForYou.scss
+
+.perfect-for-you {
+    background-color: #fff; // Adjust background color if needed
+    padding: 40px;
+    text-align: center;
+  
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+  
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+  
+      .image-container {
+        padding: 20px;
+        border-radius: 15px;
+  
+        img {
+          // width: 100%;
+          max-width: 150px; // Adjust based on the actual image size
+          border-radius: 15px;
+        }
+      }
+  
+      .text-container {
+        max-width: 400px; // Adjust based on design requirements
+        text-align: left;
+  
+        h3 {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+        }
+  
+        p {
+          font-size: 1em;
+          margin-bottom: 20px;
+        }
+  
+        a {
+          font-size: 1em;
+          color: #000; // Adjust color if needed
+          text-decoration: none;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  

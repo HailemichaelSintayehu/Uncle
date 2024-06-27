@@ -1,0 +1,53 @@
+.team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+
+  .member {
+    text-align: center;
+    margin: 1rem;
+    max-width: 200px;
+
+    .image {
+      width: 200px;
+      height: 200px;
+      border-radius: 70%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    .initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      background-color: #f7d02c;
+      /* Yellow background */
+      font-size: 2em;
+      font-weight: bold;
+      color: #555;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+
+    }
+
+    .info {
+      .name {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .role {
+        font-size: 1rem;
+        color: gray;
+      }
+
+      .description {
+        font-size: 0.9rem;
+        color: #666;
+      }
+    }
+  }
+}
