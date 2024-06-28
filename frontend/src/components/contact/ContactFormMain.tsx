@@ -57,13 +57,13 @@ const ContactFormMain = () => {
                           <div className="irc-item-content">
                             <div className="irc-item-heading">Email</div>
                             <span>
-                              <Link href="mailto:hawadologroup@gmail.com">
-                                hawadologroup@gmail.com
+                              <Link href="mailto:support@uncle.ke">
+                                support@uncle.ke
                               </Link>
                             </span>
                             <span>
-                              <Link href="mailto:support@uncle.ke">
-                              support@uncle.ke
+                              <Link href="mailto:hawadologroup@gmail.com">
+                              hawadologroup@gmail.com
                               </Link>
                             </span>
                           </div>

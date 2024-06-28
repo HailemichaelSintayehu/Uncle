@@ -125,7 +125,7 @@ const FooterTwo = () => {
                       <Link href="/about">Become an Agent</Link>
                     </li>
                     <li>
-                      <Link href="/privecy-policy">Refund Policy</Link>
+                      <Link href="/privacy-policy">Refund Policy</Link>
                     </li>
                   </ul>
                 </div>
@@ -143,10 +143,10 @@ const FooterTwo = () => {
                       <Link href="/faq">FAQ Information</Link>
                     </li>
                     <li>
-                      <Link href="/privecy-policy">Return Policy</Link>
+                      <Link href="/privacy-policy">Return Policy</Link>
                     </li>
                     <li>
-                      <Link href="/privecy-policy">Shipping & Delivery</Link>
+                      <Link href="/privacy-policy">Shipping & Delivery</Link>
                     </li>
                     <li>
                       <Link href="/track-order">Order Tranking</Link>
@@ -171,13 +171,13 @@ const FooterTwo = () => {
                 . All Rights Reserved
               </div>
               <div className="copyright-link">
-                <Link href="/privecy-policy" className="text-btn">
+                <Link href="/privacy-policy" className="text-btn">
                   Privacy Policy
                 </Link>
-                <Link href="/privecy-policy" className="text-btn">
+                <Link href="/privacy-policy" className="text-btn">
                   Terms & Conditions
                 </Link>
-                <Link href="/privecy-policy" className="text-btn">
+                <Link href="/privacy-policy" className="text-btn">
                   Sitemap
                 </Link>
               </div>

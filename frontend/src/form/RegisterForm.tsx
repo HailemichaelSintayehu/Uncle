@@ -205,7 +205,7 @@ const RegisterForm = () => {
                       />
                       <label className="sign-check" htmlFor="sing-up">
                         <span>
-                          <Link href="/privecy-policy">Accept Terms and Conditions</Link>
+                          <Link href="/terms-and-conditions">Accept Terms and Conditions</Link>
                         </span>
                       </label>
                       {error && !checked && (
