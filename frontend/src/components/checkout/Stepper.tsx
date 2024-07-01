@@ -68,7 +68,7 @@ useEffect(() => {
                     </div>
                   </div> */}
                   <div
-                    className={`item-step ${step == 1 ? "line-active" : ""}`}
+                    className={`item-step ${step >= 1 ? "line-active" : ""}`}
                   >
                     <div className="rounded-step">
                       <div
