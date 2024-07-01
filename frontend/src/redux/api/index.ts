@@ -6,7 +6,7 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
   export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-      baseUrl: "http://localhost:3001/api/",
+      baseUrl: "https://api.uncle.ke/api/",
       prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).auth.session as string;
         if (token) {
