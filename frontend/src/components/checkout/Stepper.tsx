@@ -92,12 +92,12 @@ useEffect(() => {
                     </div>
                   </div> */}
                   <div
-                    className={`item-step ${step >= 2 ? "line-active" : ""}`}
+                    className={`item-step ${step >= 3 ? "line-active" : ""}`}
                   >
                     <div className="rounded-step">
                       <div
                         className={`icon-step step-5 ${
-                          step >= 2 ? "active" : ""
+                          step == 2 ? "active" : ""
                         }`}
                       ></div>
                       
@@ -110,7 +110,7 @@ useEffect(() => {
                     <div className="rounded-step">
                       <div
                         className={`icon-step step-3 ${
-                          step >= 4 ? "active" : ""
+                          step >= 3 ? "active" : ""
                         }`}
                       ></div>
                       <h6 className="mb-1"> Payment </h6>
