@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 const WebApi = smileIdentityCore.WebApi;
 
 exports.initiateSmileId = async (req, res) => {
-  const { selfieImage, country, id_type, id_number} = req.body;
+  const { selfie, country, idType, idNumber, userId } = req.body;
   const connection = new WebApi(
     smileIdConfig.partnerId,
     smileIdConfig.callbackUrl,
@@ -12,6 +12,7 @@ exports.initiateSmileId = async (req, res) => {
     smileIdConfig.sidServer
   );
 
+  console.log(userId, 'userid')
   let partner_params = {
     job_id: uuidv4(),
     user_id: uuidv4(),
@@ -21,14 +22,16 @@ exports.initiateSmileId = async (req, res) => {
   let image_details = [
     {
       image_type_id: 2,
-      image: selfieImage,
+      image: selfie,
     },
   ];
 
   let id_info = {
-    country: country,
-    id_type: id_type,
-    id_number: id_number,
+    first_name: 'frist name',
+    last_name: 'lastName',
+    country: 'NG',
+    id_type: 'NIN',
+    id_number: '00000000004',
     entered: "true",
   };
 
@@ -38,21 +41,22 @@ exports.initiateSmileId = async (req, res) => {
     return_image_links: false,
     signature: true,
   };
-
   try {
+
+    if (!userId) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
     const data = await connection.submit_job(
       partner_params,
       image_details,
       id_info,
       options
     );
-
-    if (!req.body.userId) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
+    console.log(data, 'ccccccccccc')
     if (data.job_success) {
-      const updatedUser = await User.findByIdAndUpdate( req.body.userId,
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
         { isVerified: true },
         { new: true }
       );
@@ -62,7 +66,7 @@ exports.initiateSmileId = async (req, res) => {
       return res.status(400).json({ message: "User verification failed", error: data });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error, 'error')
     return res.status(400).json({ message: "User verification failed", error: error.message });
   }
 };

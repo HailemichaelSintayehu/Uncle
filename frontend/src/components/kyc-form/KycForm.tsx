@@ -1,8 +1,11 @@
 "use client";
-
+import { useVerifyAccountMutation } from "@/redux/api";
+import { useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
 
 interface FormValues {
   selfie: FileList;
@@ -12,14 +15,48 @@ interface FormValues {
 }
 
 function KycForm() {
+  const [verifyAccount] = useVerifyAccountMutation();
+  const user = useAppSelector(state => state.auth.user)
+  const router = useRouter();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+  const convertBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result as string);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    console.log(user, 'user')
+    const toastId = toast.loading("");
+    try {
+      const file = data.selfie[0];
+      const imageBase64 = await convertBase64(file);
+      await verifyAccount({ ...data, userId: user.id, selfie: imageBase64 }).unwrap();
+      toast.success("Your account is verified successfully", {
+        id: toastId,
+        duration: 1000,
+      });
+      router.push("../");
+    } catch (error) {
+      const errorMessage = "An error occurred";
+      console.log(error);
+      toast.error(errorMessage, { id: toastId, duration: 1000 });
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -50,7 +87,7 @@ function KycForm() {
               {...register("country", { required: "Country is required" })}
             >
               <option value="">Select the issuing country</option>
-              <option value="US">United States</option>
+              <option value="KE">United States</option>
               {/* Add more countries as needed */}
             </select>
           </div>
@@ -65,9 +102,9 @@ function KycForm() {
               {...register("idType", { required: "ID Type is required" })}
             >
               <option value="">Select ID Type</option>
-              <option value="passport">Passport</option>
-              <option value="driver_license">Driver's License</option>
-              {/* Add more ID types as needed */}
+              <option value="PASSPORT">PASSPORT</option>
+              <option value="NATIONAL_ID">NATIONAL ID</option>
+              <option value="ALIEN_CARD">ALIEN CARD</option>
             </select>
           </div>
 
