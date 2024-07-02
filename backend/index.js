@@ -12,6 +12,7 @@ const data = require("./data/appliances");
 const user_routes = require("./routes/user_routes");
 const appliance_routes = require("./routes/appliance_routes");
 const contactus_route = require("./routes/contactus_routes");
+const kyc_route = require('./routes/kyc_routes')
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(user_routes);
 app.use(appliance_routes);
 app.use(contactus_route);
+app.use(kyc_route);
 
 // load database
 (async function populate_database() {
