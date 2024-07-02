@@ -14,6 +14,7 @@ import PaymentInfo from "./PaymentInfo";
 import CancelOrderTrack from "./CancelOrderTrack";
 import { useAppSelector } from "@/redux/hooks";
 import ShipmentTracking from "./ShipmentTracking";
+import Link from "next/link";
 
 const ProfileSection = () => {
   const user = useAppSelector(state => state.auth.user)
@@ -32,9 +33,12 @@ const ProfileSection = () => {
                 alt="img not found"
               /> */}
           </div>
-          <div className="student-profile-author-text">
+          <div className="student-profile-author-text flex">
+            <div>
             <span>Hello,</span>
             <h3 className="student-profile-author-name text-capitalize"> {user?.firstname} {user?.lastname} </h3>
+            </div>
+            <Link href={'/profile/verify-account'} className="verify-btn">Verify account</Link>
           </div>
         </div>
         <div className="row">

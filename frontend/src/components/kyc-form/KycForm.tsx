@@ -1,68 +1,103 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+"use client";
 
-interface UserInfo {
-  [key: string]: any;
+import Image from "next/image";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface FormValues {
+  selfie: FileList;
+  country: string;
+  idType: string;
+  idNumber: string;
 }
 
-const DocumentVerificationForm: React.FC = () => {
-  const [userId, setUserId] = useState<string>('');
-  const [documentImageFront, setDocumentImageFront] = useState<File | null>(null);
-  const [documentImageBack, setDocumentImageBack] = useState<File | null>(null);
-  const [selfieImage, setSelfieImage] = useState<File | null>(null);
-  const [userInfo, setUserInfo] = useState<UserInfo>({});
+function KycForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
 
-  const handleFileChange = (setter: React.Dispatch<React.SetStateAction<File | null>>) => (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    setter(file);
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('userId', userId);
-    if (documentImageFront) formData.append('documentImageFront', documentImageFront);
-    if (documentImageBack) formData.append('documentImageBack', documentImageBack);
-    if (selfieImage) formData.append('selfieImage', selfieImage);
-    formData.append('userInfo', JSON.stringify(userInfo));
-
-    const response = await fetch('/api/initiate-document-verification', {
-      method: 'POST',
-      body: formData
-    });
-
-    const result = await response.json();
-    console.log('Document verification initiation result:', result);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-        placeholder="User ID"
-      />
-      <input
-        type="file"
-        onChange={handleFileChange(setDocumentImageFront)}
-        placeholder="Upload Front of Document"
-      />
-      <input
-        type="file"
-        onChange={handleFileChange(setDocumentImageBack)}
-        placeholder="Upload Back of Document"
-      />
-      <input
-        type="file"
-        onChange={handleFileChange(setSelfieImage)}
-        placeholder="Upload Selfie"
-      />
-      <button type="submit">Initiate Document Verification</button>
-    </form>
-  );
-};
+    <div className="kyc-form">
+      <div>
+        <h4>Fill in the Required Info</h4>
+        <p>The details are used to perform Biometric KYC on the user</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="upload-section">
+            <div className="input-labels">
+              <label htmlFor="selfie">Upload Selfie*</label>
+              {errors.selfie && <span>{errors.selfie.message}</span>}
+            </div>
+            <input
+              type="file"
+              id="selfie"
+              {...register("selfie", { required: "Selfie is required" })}
+            />
+          </div>
 
-export default DocumentVerificationForm;
+          <div className="country-section">
+            <div className="input-labels">
+              <label htmlFor="country">Select country*</label>
+              {errors.country && <span>{errors.country.message}</span>}
+            </div>
+            <select
+              id="country"
+              {...register("country", { required: "Country is required" })}
+            >
+              <option value="">Select the issuing country</option>
+              <option value="US">United States</option>
+              {/* Add more countries as needed */}
+            </select>
+          </div>
+
+          <div>
+            <div className="input-labels">
+              <label htmlFor="idType">Choose ID Type*</label>
+              {errors.idType && <span>{errors.idType.message}</span>}
+            </div>
+            <select
+              id="idType"
+              {...register("idType", { required: "ID Type is required" })}
+            >
+              <option value="">Select ID Type</option>
+              <option value="passport">Passport</option>
+              <option value="driver_license">Driver's License</option>
+              {/* Add more ID types as needed */}
+            </select>
+          </div>
+
+          <div className="upload-section">
+            <div className="input-labels">
+              <label htmlFor="idNumber">ID Number*</label>
+              {errors.idNumber && <span>{errors.idNumber.message}</span>}
+            </div>
+            <input
+              type="text"
+              id="idNumber"
+              {...register("idNumber", { required: "ID Number is required" })}
+              placeholder="Enter ID number"
+            />
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div className="sample-image__container">
+        <Image
+          src={"/assets/img/kyc/id_national.png"}
+          width={400}
+          height={300}
+          alt="kyc-sample-image"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default KycForm;
