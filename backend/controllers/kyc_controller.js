@@ -27,11 +27,9 @@ exports.initiateSmileId = async (req, res) => {
   ];
 
   let id_info = {
-    first_name: 'frist name',
-    last_name: 'lastName',
-    country: 'NG',
-    id_type: 'NIN',
-    id_number: '00000000004',
+    country: country,
+    id_type: idType,
+    id_number: idNumber,
     entered: "true",
   };
 
@@ -53,7 +51,7 @@ exports.initiateSmileId = async (req, res) => {
       id_info,
       options
     );
-    console.log(data, 'ccccccccccc')
+    
     if (data.job_success) {
       const updatedUser = await User.findByIdAndUpdate(
         userId,

@@ -41,7 +41,7 @@ function KycForm() {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log(user, 'user')
-    const toastId = toast.loading("");
+    const toastId = toast.loading("please wait...");
     try {
       const file = data.selfie[0];
       const imageBase64 = await convertBase64(file);
@@ -52,8 +52,7 @@ function KycForm() {
       });
       router.push("../");
     } catch (error) {
-      const errorMessage = "An error occurred";
-      console.log(error);
+      const errorMessage = "User verification failed, try again";
       toast.error(errorMessage, { id: toastId, duration: 1000 });
       console.error("Error:", error);
     }
@@ -86,9 +85,11 @@ function KycForm() {
               id="country"
               {...register("country", { required: "Country is required" })}
             >
-              <option value="">Select the issuing country</option>
-              <option value="KE">United States</option>
-              {/* Add more countries as needed */}
+              <option value="">Please select country</option>
+              <option value="GH">Ghana</option>
+              <option value="ZA">South Africa</option>
+              <option value="NG">Nigeria</option>
+              <option value="KE">Kenya</option>
             </select>
           </div>
 
