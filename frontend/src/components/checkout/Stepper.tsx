@@ -37,9 +37,9 @@ const Stepper = () => {
     }
   }
 useEffect(() => {
-if (step === 2) {
-  sendOTP();
-}
+// if (step === 2) {
+//   sendOTP();
+// }
 },[step])
   useEffect(() => {
     if(!session){
@@ -73,13 +73,13 @@ if (step === 2) {
                     <div className="rounded-step">
                       <div
                         className={`icon-step step-2 ${
-                          step >= 1 ? "active" : ""
+                          step == 1 ? "active" : ""
                         }`}
                       ></div>
                       <h6 className="mb-1"> Review </h6>
                     </div>
                   </div>
-                  <div
+                  {/* <div
                     className={`item-step ${step >= 2 ? "line-active" : ""}`}
                   >
                     <div className="rounded-step">
@@ -90,14 +90,14 @@ if (step === 2) {
                       ></div>
                       <h6 className="mb-1"> Verification </h6>
                     </div>
-                  </div>
+                  </div> */}
                   <div
-                    className={`item-step ${step >= 2 ? "line-active" : ""}`}
+                    className={`item-step ${step >= 3 ? "line-active" : ""}`}
                   >
                     <div className="rounded-step">
                       <div
                         className={`icon-step step-5 ${
-                          step >= 3 ? "active" : ""
+                          step == 2 ? "active" : ""
                         }`}
                       ></div>
                       
@@ -110,7 +110,7 @@ if (step === 2) {
                     <div className="rounded-step">
                       <div
                         className={`icon-step step-3 ${
-                          step >= 4 ? "active" : ""
+                          step >= 3 ? "active" : ""
                         }`}
                       ></div>
                       <h6 className="mb-1"> Payment </h6>
@@ -132,13 +132,13 @@ if (step === 2) {
                     <Review />{" "}
                   </>
                 )}
-                {step === 2 && (
+                {/* {step === 2 && (
                  <OTPVerification setStep={setStep}/>
-                )}
-                {step === 3 && (
+                )} */}
+                {step === 2 && (
                  <ShippingAddressForm setStep={setStep}/>
                 )}
-                {step === 4 && (
+                {step === 3 && (
                   <>
                     {" "}
                     <Payment />{" "}
@@ -156,7 +156,7 @@ if (step === 2) {
                 </div>
                 <div className="col-lg-4 text-end">
                   {step < 3 && step >= 1 &&(
-                    <button disabled={step >= 2?true:false}  style={{cursor:step >= 2?"not-allowed":""}} className="btn btn-dark" onClick={nextStep}>
+                    <button   style={{cursor:step >= 2?"not-allowed":""}} className="btn btn-dark" onClick={nextStep}>
                       Next
                     </button>
                   )} 

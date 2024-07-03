@@ -47,17 +47,17 @@ const LoginForm = () => {
     try {
       const response = await login(userInfo).unwrap();
   
-      if(response?.user?.isVerified==false){
-        await sendVerificationCode({ email:userInfo.email}).unwrap();
-        toast.success("Please check your email to verify we have sent you an email", { id: toastId, duration: 1000 });
-        router.push(`/email-verificaiton`);
-      }else{
+      // if(response?.user?.isVerified==false){
+      //   await sendVerificationCode({ email:userInfo.email}).unwrap();
+      //   toast.success("Please check your email to verify we have sent you an email", { id: toastId, duration: 1000 });
+      //   router.push(`/email-verificaiton`);
+      // }else{
       dispatch(setSession(response.session.token))
       dispatch(setUser(response.user))
        toast.success("Login Success", { id: toastId, duration: 1000 });
        router.push("/shop");
       reset();
-      } 
+      // } 
       
      
     } catch (error:any) {
