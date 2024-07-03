@@ -51,9 +51,9 @@ function KycForm() {
         duration: 1000,
       });
       router.push("../");
-    } catch (error) {
+    } catch (error: any) {
       const errorMessage = "User verification failed, try again";
-      toast.error(errorMessage, { id: toastId, duration: 1000 });
+      toast.error(error?.data.message ?? 'something went wrong', { id: toastId, duration: 1000 });
       console.error("Error:", error);
     }
   };

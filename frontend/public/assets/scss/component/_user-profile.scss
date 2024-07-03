@@ -51,6 +51,13 @@
   border-radius: 5px;
 }
 
+.verified{
+  color: green;
+}
+.not-verified{
+  color: red;
+}
+
 .student-profile-sidebar {
   background-color: var(--clr-bg-footer);
   padding: 30px;
