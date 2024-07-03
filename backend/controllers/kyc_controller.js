@@ -1,7 +1,10 @@
+const { sequelize } = require("../models");
+const { DataTypes } = require("sequelize");
 const { smileIdConfig } = require("../utils/smileIdService");
 const smileIdentityCore = require("smile-identity-core");
 const { v4: uuidv4 } = require("uuid");
 const WebApi = smileIdentityCore.WebApi;
+const User = require("../models/user")(sequelize, DataTypes);
 
 exports.initiateSmileId = async (req, res) => {
   const { selfie, country, idType, idNumber, userId } = req.body;
@@ -12,7 +15,6 @@ exports.initiateSmileId = async (req, res) => {
     smileIdConfig.sidServer
   );
 
-  console.log(userId, 'userid')
   let partner_params = {
     job_id: uuidv4(),
     user_id: uuidv4(),
@@ -40,8 +42,8 @@ exports.initiateSmileId = async (req, res) => {
     signature: true,
   };
   try {
-
-    if (!userId) {
+    const user = await User.findOne({where: {id: userId}})
+    if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
@@ -64,7 +66,6 @@ exports.initiateSmileId = async (req, res) => {
       return res.status(400).json({ message: "User verification failed", error: data });
     }
   } catch (error) {
-    console.log(error, 'error')
     return res.status(400).json({ message: "User verification failed", error: error.message });
   }
 };
