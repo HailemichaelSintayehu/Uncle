@@ -14,27 +14,56 @@ import PaymentInfo from "./PaymentInfo";
 import CancelOrderTrack from "./CancelOrderTrack";
 import { useAppSelector } from "@/redux/hooks";
 import ShipmentTracking from "./ShipmentTracking";
+import Link from "next/link";
+import { IoMdCheckmarkCircle } from "react-icons/io";
 
 const ProfileSection = () => {
-  const user = useAppSelector(state => state.auth.user)
-  const [option, setOption] = useState("rental")
+  const user = useAppSelector((state) => state.auth.user);
+  const [option, setOption] = useState("rental");
 
   return (
     <div className="course-details-area pt-120 pb-100">
       <div className="container container-small">
         <div className="student-profile-author pb-30">
           <div className="student-profile-author-img">
-            <div className='d-flex justify-content-center align-items-center rounded-circle text-white' style={{ width: "150px", fontSize: '50px', textTransform: 'uppercase', height: "150px", backgroundColor: '#d3d3d3' }}>
-              {user?.firstname?.charAt(0)}{user?.lastname?.charAt(0)}
+            <div
+              className="d-flex justify-content-center align-items-center rounded-circle text-white"
+              style={{
+                width: "150px",
+                fontSize: "50px",
+                textTransform: "uppercase",
+                height: "150px",
+                backgroundColor: "#d3d3d3",
+              }}
+            >
+              {user?.firstname?.charAt(0)}
+              {user?.lastname?.charAt(0)}
             </div>
             {/* <Image
                 src={thumb}
                 alt="img not found"
               /> */}
           </div>
-          <div className="student-profile-author-text">
-            <span>Hello,</span>
-            <h3 className="student-profile-author-name text-capitalize"> {user?.firstname} {user?.lastname} </h3>
+          <div className="student-profile-author-text flex">
+            <div>
+              <span>Hello,</span>
+              <h3 className="student-profile-author-name text-capitalize">
+                {" "}
+                {user?.firstname} {user?.lastname}{" "}
+              </h3>
+              {user.isVerified ? (
+                <p className="verified">
+                  <IoMdCheckmarkCircle /> verified
+                </p>
+              ) : (
+                <p className="not-verified">Not verified</p>
+              )}
+            </div>
+            {!user.isVerified && (
+              <Link href={"/profile/verify-account"} className="verify-btn">
+                Verify account
+              </Link>
+            )}
           </div>
         </div>
         <div className="row">
@@ -61,7 +90,8 @@ const ProfileSection = () => {
                         </label> */}
                             <select
                               className="block px-2 text-base border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                              onChange={(e) => setOption(e.target.value)}>
+                              onChange={(e) => setOption(e.target.value)}
+                            >
                               <option value="rental">Rental</option>
                               <option value="Pay Upfront">Pay Upfront</option>
                               <option value="buy">Buy</option>
@@ -72,7 +102,6 @@ const ProfileSection = () => {
                               <option value="ontime">Pay Upfront</option>
                               <option value="buy">Buy</option>
                             </select> */}
-                            
                           </div>
                         </div>
 
@@ -143,7 +172,6 @@ const ProfileSection = () => {
                   <h4 className="mb-25">Users Shipment </h4>
                   <ShipmentTracking />
                 </div>
-
 
                 <div
                   className="tab-pane fade"

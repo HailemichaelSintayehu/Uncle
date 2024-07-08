@@ -270,6 +270,13 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
             body:data,
         })
     }),
+
+    verifyAccount: builder.mutation<any, { selfie: string, userId: string, country: string, idType: string, idNumber: string}> ({
+      query: (data) => ({
+        url: 'verify-account',
+        method: 'POST',
+        body:data}),
+      }),
     }),
   });
   
@@ -298,6 +305,9 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
     useGetUserByEmailQuery,
     //orders
     useGetOrderQuery,
+
+    // kyc
+    useVerifyAccountMutation
     //
   } = apiSlice;
   
