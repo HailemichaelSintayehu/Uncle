@@ -21,6 +21,8 @@ const ProfileSection = () => {
   const user = useAppSelector((state) => state.auth.user);
   const [option, setOption] = useState("rental");
 
+  console.log(user, 'user,,,,,,,,')
+
   return (
     <div className="course-details-area pt-120 pb-100">
       <div className="container container-small">
@@ -51,19 +53,11 @@ const ProfileSection = () => {
                 {" "}
                 {user?.firstname} {user?.lastname}{" "}
               </h3>
-              {user.isVerified ? (
-                <p className="verified">
-                  <IoMdCheckmarkCircle /> verified
-                </p>
-              ) : (
-                <p className="not-verified">Not verified</p>
-              )}
+             {user?.isVerified?  <p className="verified"><IoMdCheckmarkCircle /> verified</p>: <p className="not-verified">Not verified</p>}
             </div>
-            {!user.isVerified && (
-              <Link href={"/profile/verify-account"} className="verify-btn">
-                Verify account
-              </Link>
-            )}
+            {!user?.isVerified && <Link href={"/profile/verify-account"} className="verify-btn">
+              Verify account
+            </Link>}
           </div>
         </div>
         <div className="row">
