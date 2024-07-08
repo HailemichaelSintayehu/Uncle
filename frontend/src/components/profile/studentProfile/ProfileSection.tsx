@@ -51,11 +51,19 @@ const ProfileSection = () => {
                 {" "}
                 {user?.firstname} {user?.lastname}{" "}
               </h3>
-             {user.isVerified?  <p className="verified"><IoMdCheckmarkCircle /> verified</p>: <p className="not-verified">Not verified</p>}
+              {user.isVerified ? (
+                <p className="verified">
+                  <IoMdCheckmarkCircle /> verified
+                </p>
+              ) : (
+                <p className="not-verified">Not verified</p>
+              )}
             </div>
-            <Link href={"/profile/verify-account"} className="verify-btn">
-              Verify account
-            </Link>
+            {!user.isVerified && (
+              <Link href={"/profile/verify-account"} className="verify-btn">
+                Verify account
+              </Link>
+            )}
           </div>
         </div>
         <div className="row">
