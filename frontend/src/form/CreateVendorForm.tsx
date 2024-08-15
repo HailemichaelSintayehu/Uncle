@@ -52,8 +52,8 @@ const CreateVendorForm = () => {
       password,
       gender,
     };
-    toast.success("Vendor Created Successfully", { id: toastId, duration: 1000 })
-    router.push('/email-verificaiton')
+    toast.success("Vendor Created Successfully ", { id: toastId, duration: 1000 })
+    // router.push('/email-verificaiton')
   };
 
   const selectHandler = () => {};

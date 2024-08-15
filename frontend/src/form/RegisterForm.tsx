@@ -67,14 +67,14 @@ const RegisterForm = () => {
     };
     try {
       const response = await signup(userInfo).unwrap();
-      if(response?.user?.isVerified==false){
-        toast.success("Please check your email to verify we have sent you an email", { id: toastId, duration: 1000 });
-        window?.location.replace(`/email-verificaiton?search=${response?.user?.email}`);
-      }else{
+      // if(response?.user?.isVerified==false){
+      //   toast.success("Please check your email to verify we have sent you an email", { id: toastId, duration: 1000 });
+      //   window?.location.replace(`/email-verificaiton?search=${response?.user?.email}`);
+      // }else{
         toast.success("Register Successfully",{ id: toastId, duration: 10000 })
         reset();
         router.push("/login")
-      }
+      //}
     } catch (error:any) {
       toast.error(`${error.data}`, { id: toastId, duration: 2000 });
 
@@ -91,7 +91,6 @@ const RegisterForm = () => {
             <div className="col-lg-8">
               <div className="signup-form-wrapper">
                 {/* form */}
-
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="row">
                     <div className="col-md-6">

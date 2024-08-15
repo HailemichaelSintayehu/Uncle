@@ -12,7 +12,6 @@ const data = require("./data/appliances");
 const user_routes = require("./routes/user_routes");
 const appliance_routes = require("./routes/appliance_routes");
 const contactus_route = require("./routes/contactus_routes");
-const kyc_route = require('./routes/kyc_routes')
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -25,14 +24,13 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json( {limit: '25mb'}));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // main application routes calls
 app.use(user_routes);
 app.use(appliance_routes);
 app.use(contactus_route);
-app.use(kyc_route);
 
 // load database
 (async function populate_database() {
