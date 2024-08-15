@@ -35,6 +35,29 @@
   margin-bottom: 0px;
 }
 
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.verify-btn {
+  background-color: #1D2951;
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  border-radius: 5px;
+}
+
+.verified{
+  color: green;
+}
+.not-verified{
+  color: red;
+}
+
 .student-profile-sidebar {
   background-color: var(--clr-bg-footer);
   padding: 30px;

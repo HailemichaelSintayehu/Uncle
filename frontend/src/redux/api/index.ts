@@ -6,7 +6,7 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
   export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-      baseUrl: "https://api.uncle.ke/api/",
+      baseUrl: "http://localhost:3001/api/",
       prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).auth.session as string;
         if (token) {
@@ -270,6 +270,13 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
             body:data,
         })
     }),
+
+    verifyAccount: builder.mutation<any, { selfie: string, userId: string, country: string, idType: string, idNumber: string}> ({
+      query: (data) => ({
+        url: 'verify-account',
+        method: 'POST',
+        body:data}),
+      }),
     }),
   });
   
@@ -298,6 +305,9 @@ import { Order, ProductsType, ProductsTypeId } from "@/interFace/interFace";
     useGetUserByEmailQuery,
     //orders
     useGetOrderQuery,
+
+    // kyc
+    useVerifyAccountMutation
     //
   } = apiSlice;
   
